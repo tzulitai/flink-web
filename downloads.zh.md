@@ -63,11 +63,12 @@ Hadoop 文件系统的 connector ），请选择包含匹配的 Hadoop 版本的
 {% if flink_release.optional_components %}
 ### 可选组件
 
-{% assign components = category.items | | sort: 'name' %}
+{% assign components = flink_release.optional_components | | sort: 'name' %}
 {% for component in components %}
 
 {% if component.scala_dependent %}
 
+{% if component.scala_211 %}
 <p>
 <a href="{{ component.scala_211.url }}" class="ga-track" id="{{
  component.scala_211.id }}">{{ component.name }} for Scala 2.11</a> (<a href="{{
@@ -90,6 +91,7 @@ Hadoop 文件系统的 connector ），请选择包含匹配的 Hadoop 版本的
 </p>
 {% endif %}
 
+{% endfor %}
 
 {% endif %}
 
@@ -118,6 +120,8 @@ Hadoop 文件系统的 connector ），请选择包含匹配的 Hadoop 版本的
 </p>
 
 {% endif %}
+
+{% endfor %}
 
 {% endif %}
 
